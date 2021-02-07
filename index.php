@@ -7,6 +7,17 @@
         <title>Todo List</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <style>
+
+            div.container {
+            /* background-color: peachpuff; */
+            border: 2px solid black;
+            }
+
+            .container {
+                width: 50%;
+                margin: auto;
+            }
+            
             .todo {
                 display: flex;
                 flex-direction: column;
@@ -17,6 +28,7 @@
                 margin-top: 5px;
                 padding: 10px;;
             }
+
         </style>
 </head>
 <body>

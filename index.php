@@ -12,11 +12,26 @@
             // echo $date; // return date so its also working
             $sql = "INSERT INTO todo(todo_name, todo_date) VALUES('$todo', '$date')";
             $results = mysqli_query($connection, $sql); //when i click on add a new task & refresh. task is added to my list 
+            
             // (fix the refresh bug)
             if (!$results) {
                 die("Failed");
             }else{
                 header("Location:index.php?todo-added"); //when new task added todo-added will be shown in my url
+            }
+        }
+
+            // getting the id to show in browser when i click delete on a task
+            if (isset($_GET['delete_todo'])) {
+            $delete_todo = $_GET['delete_todo'];
+            // echo $delete_todo;  // return deleted so its also working
+            $sqli = "DELETE FROM todo WHERE todo_id = $delete_todo";
+            $res = mysqli_query($connection, $sqli);
+            
+            if (!$res) {
+                die("Failed");
+            }else{
+                header("Location:index.php?todo-deleted");
             }
         }
 ?>
@@ -95,8 +110,8 @@
                     <td><?php echo $todo_id; ?></td>
                         <td><?php echo $todo_name; ?></td>
                         <td><?php echo $todo_date; ?></td>
-                        <td><a href="#" class="btn btn-primary">Edit Todo</a></td>
-                        <td><a href="#" class="btn btn-danger">Delete Todo</a></td>
+                        <td><a href="edit.php?edit_todo=<?php echo $todo_id; ?>" class="btn btn-primary">Edit Todo</a></td>
+                        <td><a href="index.php?delete_todo=<?php echo $todo_id; ?>" class="btn btn-danger">Delete Todo</a></td> <!-- wehen i hover or click on delete on one of the task than under the page (hover) or in url (click) can see ex. index.php?delete_todo=19 (todo id)-->
                     </tr>
 
                     <?php   }

@@ -3,6 +3,22 @@
 
     $sql = "SELECT * FROM todo";
     $result = mysqli_query($connection, $sql);
+
+        //if the server is reciving a request method of post (if recieved shown post request method goes to server)
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // echo "Received"; // return received so its working
+            $todo = $_POST['todo']; // echo $todo; //testing to see if add new task return the task in browser
+            $date = date('l jS \of F Y h:i:s A');
+            // echo $date; // return date so its also working
+            $sql = "INSERT INTO todo(todo_name, todo_date) VALUES('$todo', '$date')";
+            $results = mysqli_query($connection, $sql); //when i click on add a new task & refresh. task is added to my list 
+            // (fix the refresh bug)
+            if (!$results) {
+                die("Failed");
+            }else{
+                header("Location:index.php?todo-added"); //when new task added todo-added will be shown in my url
+            }
+        }
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +88,7 @@
                             $todo_id = $row['todo_id'];
                             $todo_name = $row['todo_name'];
                             $todo_date = $row['todo_date'];
-                            
+
                             ?>
 
                     <tr>

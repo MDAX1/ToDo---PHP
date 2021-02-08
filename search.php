@@ -56,8 +56,8 @@ if (isset($_POST['search'])) {
 <body>
     <div class="container">
         <div class="todo">
-            <h1><a href="../index.php">TODO CRUD PHP & MYSQL App</a></h1>
-            <h3>Add a New Todo</h3>
+            <h1>TODO Search</h1>
+            <h3><a href="../index.php">Home Page</a></h3>
             
         </div>
             <!-- Search bar function -->
@@ -91,7 +91,7 @@ if (isset($_POST['search'])) {
                                 echo "</tr>";
                             }
                             else{
-                                
+
                             while ($row = mysqli_fetch_assoc($result)) {
                                 // echo $row['todo_id'] . "<br>";
                                 $todo_id = $row['todo_id'];

@@ -57,8 +57,8 @@
 <body>
     <div class="container">
         <div class="todo">
-        <h1>TODO CRUD PHP & MYSQL App</h1>
-        <h3>Add a New Task</h3>
+        <h1>TODO</h1>
+        <h3>Update the todo</h3>
 
         <form action="" method="POST">
             <?php 
@@ -70,7 +70,7 @@
                 <input class="form-control" type="text" name="todo" placeholder="Todo Name" value="<?php echo $data['todo_name']; ?>">
             </div>
             <div class="form-group">
-                <input class="btn btn-primary" value="Add a New todo Task List" type="submit" name="edit_todo">
+                <input class="btn btn-primary" value="Update The Todo" type="submit" name="edit_todo">
             </div>
         </form>
     </div>

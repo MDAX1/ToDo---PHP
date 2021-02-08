@@ -10,6 +10,10 @@
             $todo = $_POST['todo']; // echo $todo; //testing to see if add new task return the task in browser
             $date = date('l jS \of F Y h:i:s A');
             // echo $date; // return date so its also working
+            if (empty($todo)) {
+                $error = "Field is required";
+            }
+            else{
             $sql = "INSERT INTO todo(todo_name, todo_date) VALUES('$todo', '$date')";
             $results = mysqli_query($connection, $sql); //when i click on add a new task & refresh. task is added to my list 
             
@@ -20,7 +24,7 @@
                 header("Location:index.php?todo-added"); //when new task added todo-added will be shown in my url
             }
         }
-
+    }
             // getting the id to show in browser when i click delete on a task
             if (isset($_GET['delete_todo'])) {
             $delete_todo = $_GET['delete_todo'];
@@ -86,8 +90,13 @@
 <body>
     <div class="container">
         <div class="todo">
-            <h3>Add a New Task</h3>
-
+            <h1>TODO</h1>
+            <h3>Add a New Todo</h3>
+            <?php 
+                if (isset($error)) {
+                    echo "<div class='alert alert-danger'>$error</div>";
+                }
+            ?>
             <form action="" method="POST">
                 <div class="form-group">
                         <input class="form-control" type="text" name="todo" placeholder="Todo Name">

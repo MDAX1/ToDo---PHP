@@ -13,7 +13,7 @@ $connection = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 if (!$connection) {
     die("Failed connect to the database " . mysqli_error($connection));
 } else {
-        echo ("successfully connected to database");
+        // echo ("successfully connected to database");
 }
 
 ?>

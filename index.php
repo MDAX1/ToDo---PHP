@@ -1,5 +1,8 @@
 <?php 
-    include "db_connection.php";
+    include "db.inc.php";
+
+    $sql = "SELECT * FROM todo";
+    $result = mysqli_query($connection, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo List</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <style>
 
             div.container {
@@ -28,13 +31,14 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: 5px;
-                border: 30px solid gray;
+                border: 3px solid #cccccc;
                 margin-top: 5px;
                 padding: 10px;;
             }
 
         </style>
 </head>
+
 <body>
     <div class="container">
         <div class="todo">
@@ -61,13 +65,31 @@
                     <th>Delete Todo</th>
                 </thead>
                 <tbody>
+                    <?php 
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            // echo $row['todo_id'] . "<br>"; // getiing all the ids in the database
+                            // puting them in the table
+                            $todo_id = $row['todo_id'];
+                            $todo_name = $row['todo_name'];
+                            $todo_date = $row['todo_date'];
+                            
+                            ?>
+
                     <tr>
-                        <td>1</td>
-                        <td>pet the cat</td>
-                        <td>Sunday 7th february, 2021</td>
+                    <td><?php echo $todo_id; ?></td>
+                        <td><?php echo $todo_name; ?></td>
+                        <td><?php echo $todo_date; ?></td>
                         <td><a href="#" class="btn btn-primary">Edit Todo</a></td>
                         <td><a href="#" class="btn btn-danger">Delete Todo</a></td>
                     </tr>
+
+                    <?php   }
+
+                    ?>
+
                 </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

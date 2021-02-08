@@ -15,7 +15,7 @@
             
             // (fix the refresh bug)
             if (!$results) {
-                die("Failed");
+                die("Operation failed, something went wrong!");
             }else{
                 header("Location:index.php?todo-added"); //when new task added todo-added will be shown in my url
             }

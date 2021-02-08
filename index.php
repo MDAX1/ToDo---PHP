@@ -67,26 +67,50 @@
                 padding: 10px;;
             }
 
+        .search {
+            margin: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px;
+            
+        }
+
+        #search-btn {
+            margin: 20px;
+        }
+
+
         </style>
 </head>
 
 <body>
     <div class="container">
         <div class="todo">
-        <h3>Add a New Task</h3>
+            <h3>Add a New Task</h3>
 
-        <form action="" method="POST">
+            <form action="" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="todo" placeholder="Todo Name">
+                        <input class="form-control" type="text" name="todo" placeholder="Todo Name">
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-primary" value="Add a New todo Task List"
-                    type="submit">
+                    <input class="btn btn-primary" value="Add a New todo Task List" type="submit">
                 </div>
             </form>
         </div>
-        <div class="table-responsive">
+
+            <!-- Search bar -->
+        <div class="col-lg-4 search">
+            <form action="search.php" method="POST">
+                <input class="form-control" type="text" name="search" placeholder="Search Todo">
+
+            <div class="form-group">
+                <input class="btn btn-primary" id="search-btn" value="search" type="submit">
+            </div>
+            </form>
+        </div>
+
+        <div class="table-responsive col-lg-12">
             <table class="table table-bordered table -striped table-hover">
                 <thead>
                     <th>ID</th>

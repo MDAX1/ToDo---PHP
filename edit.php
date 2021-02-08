@@ -13,9 +13,9 @@
         $run = mysqli_query($connection, $sql);
 
         if (!$run) {
-            die("Failed");
+            die("Operation failed, something went wrong!");
         }else{
-            header("Location: index.php?updated");
+            header("Location: index.php?todo_updated");
         }
     }
 ?>
